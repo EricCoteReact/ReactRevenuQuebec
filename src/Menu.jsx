@@ -8,27 +8,35 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import { NavLink as RRNavLink } from 'react-router-dom';
 
 const Menu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
       <Navbar color='dark' dark expand='md'>
-        <NavbarBrand href='/'>Revenu Québec</NavbarBrand>
+        <NavbarBrand tag={RRNavLink} to='/'>
+          Revenu Québec
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='mr-auto' navbar>
             <NavItem>
-              <NavLink href='#home'>Accueil</NavLink>
+              <NavLink tag={RRNavLink} to='/' exact>
+                Accueil
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='#about'>A Propos</NavLink>
+              <NavLink tag={RRNavLink} to='/about'>
+                A Propos
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='#count'>Compteur</NavLink>
+              <NavLink tag={RRNavLink} to='/count'>
+                Compteur
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
